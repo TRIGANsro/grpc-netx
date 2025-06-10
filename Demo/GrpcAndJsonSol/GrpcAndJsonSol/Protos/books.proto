@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcAndJsonSol";
+
+import "google/api/annotations.proto";
+
+service Books {
+  rpc GetBook (GetBookRequest) returns (Book) {
+    option (google.api.http) = {
+      get: "/v1/books/{id}"
+    };
+  }
+}
+
+message GetBookRequest {
+  string id = 1;
+}
+
+message Book {
+  string id = 1;
+  string title = 2;
+}
